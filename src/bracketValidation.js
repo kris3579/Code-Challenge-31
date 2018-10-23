@@ -1,6 +1,34 @@
 'use strict';
 
-function bracketValidation(str) {
+class Stack {
+  constructor() {
+    this.storage = [];
+    this.size = 0;
+  }
+
+  push(value) {
+    this.storage.push(value);
+    this.size += 1;
+  }
+
+  pop() {
+    this.storage.pop();
+    this.size -= 1;
+  }
+
+  peek() {
+    let finalIndex;
+    if (this.storage.length !== 0) {
+      for (let i = 0; i < this.storage.length; i++) {
+        finalIndex = i;
+      }
+      return this.storage[finalIndex];
+    }
+    return undefined;
+  }
+}
+
+module.exports = function bracketValidation(str) {
   const validationStack = new Stack();
   if (typeof str !== 'string') {
     return false;
@@ -25,8 +53,8 @@ function bracketValidation(str) {
       }
     }
   }
-  if (validationStack.length === 0) {
+  if (validationStack.size === 0) {
     return true;
   }
   return false;
-}
+};
